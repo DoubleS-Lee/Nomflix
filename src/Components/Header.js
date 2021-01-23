@@ -1,6 +1,8 @@
-// yarn add styled-components : local css를 적용하기 위해 설치
+// styled-components에서는 styled-components에 props를 넘겨줄 수 있다
+// withRouter로 props를 다른 컴포넌트에 넘겨줄 수 있다
+// withRouter로 props를 넘겨받을 함수를 감싸주기만 하면 된다
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SHeader = styled.header`
@@ -26,6 +28,10 @@ const Item = styled.li`
     width: 80px;
     height: 50px;
     text-align: center;
+    // transparent는 투명이라는 뜻이다
+    // props를 받아서 current 값에 따라 효과를 바꿔줌
+    border-bottom: 3px solid ${props => (props.current ? "#3498db" : "transparent")};
+    transition: border-bottom 0.5s ease-in-out;
 `;
 
 const SLink = styled(Link)`
@@ -36,20 +42,26 @@ const SLink = styled(Link)`
 `;
 
 
-export default function Header () {
+function Header (props) {
+    console.log(props);
+    const {location:{pathname}} = props;
+    console.log(pathname);
     return (
         <SHeader>
             <List>
-                <Item>
+                {/* props에 current라는 변수를 담아서 함께 Item에 넘겨준다 */}
+                <Item current={pathname === '/'}>
                     <SLink to='/'>Movies</SLink>
                 </Item>
-                <Item>
+                <Item current={pathname === '/tv'}>
                     <SLink to='/tv'>TV</SLink>
                 </Item>
-                <Item>
+                <Item current={pathname === '/search'}>
                     <SLink to='/search'>Search</SLink>
                 </Item>
             </List>
         </SHeader>
     )
 }
+
+export default withRouter(Header);
