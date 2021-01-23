@@ -43,9 +43,9 @@ const SLink = styled(Link)`
 
 
 function Header (props) {
-    console.log(props);
+    // console.log(props);
     const {location:{pathname}} = props;
-    console.log(pathname);
+    // console.log(pathname);
     return (
         <SHeader>
             <List>
