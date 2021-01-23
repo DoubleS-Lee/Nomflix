@@ -1,8 +1,9 @@
 import React from 'react';
+import './Header.css'
 
 export default function Header () {
     return (
-        <ul>
+        <ul className='nav'>
             <li>
                 <a href="/">Movies</a>
             </li>
