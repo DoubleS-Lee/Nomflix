@@ -43,9 +43,7 @@ export default function DetailContainer(props) {
                 loading: false,
                 result:result,
             });
-        }
-
-        
+        }        
     };
 
     useEffect(() => {
