@@ -4,17 +4,15 @@
 
 import axios from 'axios';
 
-export default function api () {
-    axios.create({
-        baseURL: "https://api.themoviedb.org/3/",
-        // api를 요청할때 api_key는 필수로 입력해야하고 language는 옵션 사항인데
-        // 어쨌든 params에 넣어서 전달한다
-        params: {
-            api_key: "5278ad8b44de73cdf551b379b01facdd",
-            language: "en-US"
-        }
-    })
-}
+const api = axios.create({
+                baseURL: "https://api.themoviedb.org/3/",
+                // api를 요청할때 api_key는 필수로 입력해야하고 language는 옵션 사항인데
+                // 어쨌든 params에 넣어서 전달한다
+                params: {
+                    api_key: "5278ad8b44de73cdf551b379b01facdd",
+                    language: "en-US"
+                }
+            });
 
 
 // 이 앱에서 쓸 api 경로를 이 곳에서 모두 지정해준다
@@ -23,7 +21,7 @@ export default function api () {
 export const moviesApi = {
     nowPlaying: () => api.get('movie/now_playing'),
     upcoming: () => api.get('movie/upcoming'),
-    popular: () => api.get('movie/polular'),
+    popular: () => api.get('movie/popular'),
     // Detail 페이지로 갈때 id가 필요하다
     // params - append_to_response를 사용해서 videos를 입력하면 videos 정보까지 가져온다 (여기서는 선택사항이다)
     movieDetail: (id) => api.get(`movie/${id}`,{
