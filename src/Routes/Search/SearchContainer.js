@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { moviesApi, tvApi } from '../../api';
 import SearchPresenter from './SearchPresenter';
 
 export default function SearchContainer() {
@@ -10,6 +11,41 @@ export default function SearchContainer() {
         loading: false,
     });
 
+    const handleSummit = () => {
+        const {searchTerm} = state;
+        if (searchTerm !== "") {
+            searchByTerm();
+        }
+    }
+
+    const searchByTerm = async() => {
+        // console.log(searchTerm);
+        setState({
+            loading: true,
+        });
+        try {
+            const {data:{results:movieResults}} = await moviesApi.search(searchTerm);
+            // console.log(movieResults);
+            const {data:{results:TVResults}} = await tvApi.search(searchTerm);
+            setState({
+                movieResults:{movieResults},
+                TVResults:{TVResults},
+            })
+        } catch {
+            setState({
+                error:"검색 결과를 찾을 수 없습니다",   
+            })
+        } finally {
+            setState({
+                loading:false,
+            })
+        }
+    }
+
+    useEffect(() => {
+        handleSummit();
+    },[])
+
     const {movieResults, TVResults, searchTerm, error, loading} = state;
 
     return(
@@ -20,6 +56,7 @@ export default function SearchContainer() {
                 searchTerm={searchTerm}
                 error={error}
                 loading={loading}
+                handleSummit={handleSummit}
             />
         </div>
     )

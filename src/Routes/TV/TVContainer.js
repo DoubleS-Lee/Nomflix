@@ -31,13 +31,11 @@ export default function TVContainer() {
                 loading:false,
             });
         }
-        
     }
 
     useEffect(() => {
         getApi();
-
-    })
+    },[])
 
     const { topRated, popular, airingToday, error, loading } = state;
     return(
