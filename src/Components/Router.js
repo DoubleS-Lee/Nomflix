@@ -3,6 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../Routes/Home';
 import Search from '../Routes/Search';
 import TV from '../Routes/TV';
+import Detail from '../Routes/Detail';
 import Header from './Header';
 
 
@@ -17,8 +18,9 @@ export default function Router() {
                     {/* exact를 써야 주소상 경로에 있는 모든 페이지를 렌더링하는 사태를 막을 수 있다 */}
                     <Route exact path='/' component={Home} />
                     <Route exact path='/tv' component={TV} />
-                    <Route path='/tv/popular' render={() => <h1>Popular</h1>} />
                     <Route path='/search' component={Search} />
+                    <Route path='/movie/:id' component={Detail} />
+                    <Route path='/tvshow/:id' component={Detail} />
                     {/* Redirect : 내가 설정해준 주소가 없으면 그 외의 모든 주소값에 대해(from='*') 해당 페이지(to='/')를 불러온다 */}
                     {/* Switch와 함께 써야 함 */}
                     <Redirect from='*' to='/' />
