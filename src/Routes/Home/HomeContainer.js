@@ -11,8 +11,6 @@ export default function HomeContainer() {
         loading:true,
     });
 
-    const {nowPlaying, upcoming, popular, error, loading} = state;
-
     const getApi = async() => {
         try{
             const {data:{results:nowPlaying}} = await moviesApi.nowPlaying();
@@ -20,9 +18,9 @@ export default function HomeContainer() {
             const {data:{results:upcoming}} = await moviesApi.upcoming();
             const {data:{results:popular}} = await moviesApi.popular();
             setState({
-                nowPlaying:{nowPlaying},
-                upcoming:{upcoming},
-                popular:{popular},
+                nowPlaying:nowPlaying,
+                upcoming:upcoming,
+                popular:popular,
                 loading:false,
             });
         } catch {
@@ -30,15 +28,15 @@ export default function HomeContainer() {
                 error: "영화정보를 불러올 수 없습니다.",
                 loading:false,
             });
-        }   
+        }
     }
 
     useEffect(() => {
         getApi();
     },[])
 
+    const {nowPlaying, upcoming, popular, error, loading} = state;
     
-
     return (
         <div>
             <HomePresenter 
