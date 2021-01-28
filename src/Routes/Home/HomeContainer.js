@@ -14,7 +14,6 @@ export default function HomeContainer() {
     const getApi = async() => {
         try{
             const {data:{results:nowPlaying}} = await moviesApi.nowPlaying();
-            // console.log(nowPlaying);
             const {data:{results:upcoming}} = await moviesApi.upcoming();
             const {data:{results:popular}} = await moviesApi.popular();
             setState({

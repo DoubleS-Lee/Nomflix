@@ -18,9 +18,9 @@ export default function TVContainer() {
             const {data:{results:popular}} = await tvApi.popular();
             const {data:{results:airingToday}} = await tvApi.airingToday();
             setState({
-                topRated:{topRated},
-                popular:{popular},
-                airingToday:{airingToday},
+                topRated:topRated,
+                popular:popular,
+                airingToday:airingToday,
                 loading:false,
             });
         } catch {
