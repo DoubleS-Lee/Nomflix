@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { moviesApi, tvApi } from '../../api';
 import SearchPresenter from './SearchPresenter';
 
@@ -31,6 +31,7 @@ export default function SearchContainer() {
 
     const searchByTerm = async() => {
         // console.log(searchTerm);
+        const {searchTerm} = state;
         setState({
             loading: true,
         });
@@ -50,10 +51,6 @@ export default function SearchContainer() {
             })
         }
     }
-
-    // useEffect(() => {
-    //     handleSummit();
-    // },[])
 
     const {movieResults, TVResults, searchTerm, error, loading} = state;
 

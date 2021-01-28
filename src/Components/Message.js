@@ -2,9 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Container = styled.div``;
+const Container = styled.div`
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+`;
 
-const Text = styled.span``;
+const Text = styled.span`
+    color: ${props => props.color};
+`;
 
 export default function Message ({text, color}) {
 
