@@ -11,11 +11,22 @@ export default function SearchContainer() {
         loading: false,
     });
 
-    const handleSummit = () => {
+    const handleSummit = (e) => {
+        // console.log(e);
+        e.preventDefault();
         const {searchTerm} = state;
         if (searchTerm !== "") {
             searchByTerm();
         }
+    }
+
+    const updateTerm = (e) => {
+        const {target:{value}} = e;
+        // console.log(value);
+        setState({
+            searchTerm:value
+        });
+        // console.log(searchTerm);
     }
 
     const searchByTerm = async() => {
@@ -28,8 +39,8 @@ export default function SearchContainer() {
             // console.log(movieResults);
             const {data:{results:TVResults}} = await tvApi.search(searchTerm);
             setState({
-                movieResults:{movieResults},
-                TVResults:{TVResults},
+                movieResults:movieResults,
+                TVResults:TVResults,
                 loading:false,
             })
         } catch {
@@ -40,9 +51,9 @@ export default function SearchContainer() {
         }
     }
 
-    useEffect(() => {
-        handleSummit();
-    },[])
+    // useEffect(() => {
+    //     handleSummit();
+    // },[])
 
     const {movieResults, TVResults, searchTerm, error, loading} = state;
 
@@ -55,6 +66,7 @@ export default function SearchContainer() {
                 error={error}
                 loading={loading}
                 handleSummit={handleSummit}
+                updateTerm={updateTerm}
             />
         </div>
     )
