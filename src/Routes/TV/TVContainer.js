@@ -21,13 +21,11 @@ export default function TVContainer() {
                 topRated:{topRated},
                 popular:{popular},
                 airingToday:{airingToday},
+                loading:false,
             });
         } catch {
             setState({
-                error:"TV 정보를 불러올 수 없습니다"
-            });
-        } finally {
-            setState({
+                error:"TV 정보를 불러올 수 없습니다",
                 loading:false,
             });
         }

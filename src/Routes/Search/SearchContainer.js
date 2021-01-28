@@ -30,13 +30,11 @@ export default function SearchContainer() {
             setState({
                 movieResults:{movieResults},
                 TVResults:{TVResults},
+                loading:false,
             })
         } catch {
             setState({
-                error:"검색 결과를 찾을 수 없습니다",   
-            })
-        } finally {
-            setState({
+                error:"검색 결과를 찾을 수 없습니다",
                 loading:false,
             })
         }

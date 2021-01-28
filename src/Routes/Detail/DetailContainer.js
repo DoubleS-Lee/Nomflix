@@ -34,23 +34,25 @@ export default function DetailContainer(props) {
             } else {
                 ({date:result} = await tvApi.tvDetail(parsedId));
             }
-        } catch {
-            setState({
-                error:"정보를 찾을 수 없습니다",
-            });
-        } finally {
             setState({
                 loading: false,
                 result:result,
+            })
+        } catch {
+            setState({
+                error:"정보를 찾을 수 없습니다",
+                loading: false,
+                result:result,
             });
-        }        
+        } 
     };
 
     useEffect(() => {
         getInfo();
     },[])
-
+    
     const { result, error, loading } = state;
+    // console.log(result);
     return(
         <div>
             <DetailPresenter 
