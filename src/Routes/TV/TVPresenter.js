@@ -5,15 +5,19 @@ import Section from '../../Components/Section';
 import Loader from '../../Components/Loader';
 import Message from '../../Components/Message';
 import Poster from '../../Components/Poster';
+import Helmet from 'react-helmet';
 
 const Container = styled.div`
-    padding: 0px 20px;
+    padding: 20px;
 `;
 
 
 export default function TVPresenter({topRated, popular, airingToday, error, loading}) {
     return (
         <>
+            <Helmet>
+                <title>TVShow | Nomflix</title>
+            </Helmet>
             {loading ? <Loader /> :
                 <Container>
                     {topRated && 
