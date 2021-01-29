@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Loader from '../../Components/Loader';
 import Section from '../../Components/Section';
 import Message from '../../Components/Message';
+import Poster from '../../Components/Poster';
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -30,11 +31,25 @@ export default function SearchPresenter ({movieResults, TVResults, searchTerm, e
             {loading ? <Loader/> : <>
                 {movieResults && movieResults.length>0 && (
                     <Section title="Movie Result">
-                        {movieResults.map((movie) => <span>{movie.title}</span>)}
+                        {movieResults.map((movie) => <Poster 
+                                                            key={movie.id} 
+                                                            id={movie.id} 
+                                                            year={movie.release_date && movie.release_date.substring(0,4)} 
+                                                            title={movie.original_title} 
+                                                            rating={movie.vote_average} 
+                                                            imageUrl={movie.poster_path} 
+                                                            isMovie={false}/>)}
                     </Section>)}
                 {TVResults && TVResults.length>0 && (
                     <Section title="TV Show Result">
-                        {TVResults.map((tvShow) => <span>{tvShow.name}</span>)}
+                        {TVResults.map((tvShow) => <Poster 
+                                                            key={tvShow.id} 
+                                                            id={tvShow.id} 
+                                                            year={tvShow.first_air_date && tvShow.first_air_date.substring(0,4)} 
+                                                            title={tvShow.original_name} 
+                                                            rating={tvShow.vote_average} 
+                                                            imageUrl={tvShow.poster_path} 
+                                                            isMovie={false}/>)}
                     </Section>)}
                 {error && <Message color="#e74c3c" text={error} />}
                 {TVResults && movieResults && TVResults === 0 && movieResults === 0 && (<Message color="#95a5a6" text="검색 결과가 없습니다" />)}

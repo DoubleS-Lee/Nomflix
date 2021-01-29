@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Section from '../../Components/Section';
 import Loader from '../../Components/Loader';
 import Message from '../../Components/Message';
+import Poster from '../../Components/Poster';
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -18,17 +19,38 @@ export default function TVPresenter({topRated, popular, airingToday, error, load
                     {topRated && 
                         topRated.length > 0 
                             && (<Section title="Top Rated TV Shows">
-                                    {topRated.map((tvshow) => <span key={tvshow.id}>{tvshow.name}</span>)}
+                                    {topRated.map((tvShow) => <Poster 
+                                                            key={tvShow.id} 
+                                                            id={tvShow.id} 
+                                                            year={tvShow.first_air_date && tvShow.first_air_date.substring(0,4)} 
+                                                            title={tvShow.original_name} 
+                                                            rating={tvShow.vote_average} 
+                                                            imageUrl={tvShow.poster_path} 
+                                                            isMovie={false}/>)}
                                 </Section>)}
                     {popular && 
                         popular.length > 0 && 
                             (<Section title="Popular TV Shows">
-                                {popular.map((tvshow) => <span key={tvshow.id}>{tvshow.name}</span>)}
+                                {popular.map((tvShow) => <Poster 
+                                                            key={tvShow.id} 
+                                                            id={tvShow.id} 
+                                                            year={tvShow.first_air_date && tvShow.first_air_date.substring(0,4)} 
+                                                            title={tvShow.original_name} 
+                                                            rating={tvShow.vote_average} 
+                                                            imageUrl={tvShow.poster_path} 
+                                                            isMovie={false}/>)}
                             </Section>)}
                     {airingToday && 
                         airingToday.length > 0 && 
                             (<Section title="Airing Today TV Shows">
-                                {airingToday.map((tvshow) => <span key={tvshow.id}>{tvshow.name}</span>)}
+                                {airingToday.map((tvShow) => <Poster 
+                                                            key={tvShow.id} 
+                                                            id={tvShow.id} 
+                                                            year={tvShow.first_air_date && tvShow.first_air_date.substring(0,4)} 
+                                                            title={tvShow.original_name} 
+                                                            rating={tvShow.vote_average} 
+                                                            imageUrl={tvShow.poster_path} 
+                                                            isMovie={false}/>)}
                             </Section>)}
                     {error && <Message color="#e74c3c" text={error} />}
                 </Container>
