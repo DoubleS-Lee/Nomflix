@@ -58,7 +58,7 @@ function Header (props) {
                     <SLink to='/'>Movies</SLink>
                 </Item>
                 <Item current={pathname === '/tv'}>
-                    <SLink to='/tv'>TV</SLink>
+                    <SLink to='/tvshow'>TV</SLink>
                 </Item>
                 <Item current={pathname === '/search'}>
                     <SLink to='/search'>Search</SLink>

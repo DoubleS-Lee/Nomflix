@@ -42,7 +42,7 @@ const Cover = styled.div`
 `;
 
 export default function DetailPresenter({result, error, loading}) {
-
+    // console.log(result);
     return (
         <>  
             {loading ? <Loader /> : (

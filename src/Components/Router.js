@@ -17,7 +17,7 @@ export default function Router() {
                 <Switch>
                     {/* exact를 써야 주소상 경로에 있는 모든 페이지를 렌더링하는 사태를 막을 수 있다 */}
                     <Route exact path='/' component={Home} />
-                    <Route exact path='/tv' component={TV} />
+                    <Route exact path='/tvshow' component={TV} />
                     <Route path='/search' component={Search} />
                     <Route path='/movie/:id' component={Detail} />
                     <Route path='/tvshow/:id' component={Detail} />

@@ -8,12 +8,15 @@ export default function DetailContainer(props) {
         result: null,
         error: null,
         loading: true,
+        isMovie: props.location.pathname.includes("/movie/"),
     });
 
     const getInfo = async() => {
         // console.log(props);
-        const {match:{params:{id}}, history, location:{pathname}} = props;
+        const {match:{params:{id}}, history} = props;
         // console.log(id);
+
+        const {isMovie} = state;
 
         // id값을 가져오고 int로 변환시킨 다음 변환이 안되면 페이지를 home으로 돌려보낸다
         const parsedId = parseInt(id);
@@ -26,13 +29,12 @@ export default function DetailContainer(props) {
         let result = null;
         try {
             // 만약 props.location.pathname에 '/movie/'가 포함되어 있다면 true
-            if (pathname.includes("/movie/")) {
+            if (isMovie) {
                 // result를 let으로 선언해줬기 때문에 아래에서 const를 사용하면 안된다
                 // 대신 ()를 사용해서 let을 선언해준 효과를 계속 가져간다
                 ({data:result} = await moviesApi.movieDetail(parsedId));
-                // console.log(result);
             } else {
-                ({date:result} = await tvApi.tvDetail(parsedId));
+                ({data:result} = await tvApi.tvDetail(parsedId));
             }
             setState({
                 loading: false,
@@ -41,8 +43,6 @@ export default function DetailContainer(props) {
         } catch {
             setState({
                 error:"정보를 찾을 수 없습니다",
-                loading: false,
-                result:result,
             });
         } 
     };
