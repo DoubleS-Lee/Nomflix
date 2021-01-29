@@ -33,7 +33,8 @@ export const moviesApi = {
     search: (term) => api.get('search/movie', {
         params: {
             // 검색어의 스페이스나 느낌표같은 특수문자를 인코딩하기 위해 term에 encodeURLComponent를 씌워준다
-            query: encodeURIComponent(term)
+            query: encodeURIComponent(term),
+            // language: "ko-KR",
         }
     })
 };
