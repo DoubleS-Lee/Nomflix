@@ -24,7 +24,7 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-    width: 80px;
+    width: 100px;
     height: 50px;
     text-align: center;
     // transparent는 투명이라는 뜻이다
@@ -57,7 +57,7 @@ function Header (props) {
                 <Item current={pathname === '/'}>
                     <SLink to='/'>Movies</SLink>
                 </Item>
-                <Item current={pathname === '/tv'}>
+                <Item current={pathname === '/tvshow'}>
                     <SLink to='/tvshow'>TV</SLink>
                 </Item>
                 <Item current={pathname === '/search'}>
