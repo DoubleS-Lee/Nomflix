@@ -6,6 +6,7 @@ import TV from '../Routes/TV';
 import Detail from '../Routes/Detail';
 import Header from './Header';
 import UseApp from '../useContext/UseApp';
+import UseReducerApp from '../useReducer/UseReducerApp';
 
 
 export default function Router() {
@@ -23,6 +24,7 @@ export default function Router() {
                     <Route path='/movie/:id' component={Detail} />
                     <Route path='/tvshow/:id' component={Detail} />
                     <Route path='/usecontext' component={UseApp} />
+                    <Route path='/usereducer' component={UseReducerApp} />
                     {/* Redirect : 내가 설정해준 주소가 없으면 그 외의 모든 주소값에 대해(from='*') 해당 페이지(to='/')를 불러온다 */}
                     {/* Switch와 함께 써야 함 */}
                     <Redirect from='*' to='/' />
