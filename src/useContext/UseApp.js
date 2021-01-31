@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import UserContextProvider from './Context';
 import Screen from './Screen';
 
