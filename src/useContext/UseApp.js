@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
+import UserContextProvider from './Context';
 import Screen from './Screen';
 
 export default function UseApp () {
-    const [user] = useState({
-        name:"DoubleS",
-    })
+
     return (
-        <>
-            <Screen user={user}/>
-        </>
+        <UserContextProvider>
+            <Screen />
+        </UserContextProvider>
     )
 }
