@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { UserContext } from './Context';
+import React from 'react';
+import { useFns } from './Context';
 import Header from './Header';
 
 export default function Screen () {
-    const {LogUserIn} = useContext(UserContext);
-
+    const {LogUserIn} = useFns();
+    // console.log(LogUserIn)
     return (
         <div>
             <Header />
