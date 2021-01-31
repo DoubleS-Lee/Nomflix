@@ -63,6 +63,9 @@ function Header (props) {
                 <Item current={pathname === '/search'}>
                     <SLink to='/search'>Search</SLink>
                 </Item>
+                <Item current={pathname === '/usecontext'}>
+                    <SLink to='/usecontext'>Usecontext</SLink>
+                </Item>
             </List>
         </SHeader>
     )
